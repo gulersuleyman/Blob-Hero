@@ -14,5 +14,16 @@ public class AnimationController : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
     }
 
+    public void IdleAnimation(bool isIdle)
+    {
+        if (isIdle == _animator.GetBool("isIdle")) return;
 
+        _animator.SetBool("isIdle", isIdle);
+    }
+    public void WalkAnimation(bool isWalking)
+    {
+        if (isWalking == _animator.GetBool("isWalking")) return;
+
+        _animator.SetBool("isWalking", isWalking);
+    }
 }
