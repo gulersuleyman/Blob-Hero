@@ -22,6 +22,11 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector3 direction = Vector3.forward * _joystick.Vertical + Vector3.right * _joystick.Horizontal;
-        _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        if(direction.x>0.1f || direction.z>0.1f || direction.x < -0.1f || direction.z < -0.1f)
+		{
+            _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.VelocityChange);
+        }
+        
+        
     }
 }
