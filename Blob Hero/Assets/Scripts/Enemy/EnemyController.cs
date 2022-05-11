@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _agent.Move(_player.transform.position);
+        // _agent.Move(_player.transform.position);
+        _agent.destination = _player.transform.position;
     }
 }
