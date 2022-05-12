@@ -8,7 +8,6 @@ public class AnimationController : MonoBehaviour
 
     Animator _animator;
 
-    // Start is called before the first frame update
     void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
@@ -25,5 +24,11 @@ public class AnimationController : MonoBehaviour
         if (isWalking == _animator.GetBool("isWalking")) return;
 
         _animator.SetBool("isWalking", isWalking);
+    }
+    public void DeathAnimation(bool isDeath)
+    {
+        if (isDeath == _animator.GetBool("isDeath")) return;
+
+        _animator.SetBool("isDeath", isDeath);
     }
 }

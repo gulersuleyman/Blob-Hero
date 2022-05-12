@@ -10,9 +10,17 @@ public class PlayerCollision : MonoBehaviour
 
 	float fillAmount;
 	float increaseFillAmount;
+
+
+	AnimationController _animationController;
+
+	private void Awake()
+	{
+		_animationController = GetComponent<AnimationController>();
+	}
 	private void Start()
 	{
-		increaseFillAmount = 0.25f;
+		increaseFillAmount = 0.05f;
 		fillAmount = 1;
 	}
 
@@ -27,6 +35,13 @@ public class PlayerCollision : MonoBehaviour
 		{
 			fillAmount -= increaseFillAmount;
 			bar.fillAmount = fillAmount;
+			if(fillAmount<0.07f)
+			{
+				fillAmount = 0;
+				bar.fillAmount = fillAmount;
+				_animationController.DeathAnimation(true);
+
+			}
 		}
 	}
 }
