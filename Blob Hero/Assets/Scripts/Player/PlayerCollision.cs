@@ -9,9 +9,10 @@ public class PlayerCollision : MonoBehaviour
 	[SerializeField] Image bar;
 
 	float fillAmount;
-
+	float increaseFillAmount;
 	private void Start()
 	{
+		increaseFillAmount = 0.25f;
 		fillAmount = 1;
 	}
 
@@ -24,7 +25,7 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Enemy"))
 		{
-			fillAmount -= 0.01f;
+			fillAmount -= increaseFillAmount;
 			bar.fillAmount = fillAmount;
 		}
 	}
