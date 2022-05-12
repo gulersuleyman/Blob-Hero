@@ -1,18 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	[SerializeField] GameObject canvas;
+	[SerializeField] Image bar;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	float fillAmount;
+
+	private void Start()
+	{
+		fillAmount = 1;
+	}
+
+	private void Update()
+	{
+		canvas.transform.LookAt(Camera.main.transform.position);
+	}
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		if(collision.gameObject.CompareTag("Enemy"))
+		{
+			fillAmount -= 0.01f;
+			bar.fillAmount = fillAmount;
+		}
+	}
 }
