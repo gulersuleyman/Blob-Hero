@@ -40,6 +40,7 @@ public class PlayerCollision : MonoBehaviour
 				fillAmount = 0;
 				bar.fillAmount = fillAmount;
 				_animationController.DeathAnimation(true);
+				canvas.gameObject.SetActive(false);
 
 			}
 		}
