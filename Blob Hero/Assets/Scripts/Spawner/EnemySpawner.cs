@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
 		for (int i = 0; i < points.Length; i++)
 		{
             int a= Random.Range(1, 3);
-            int b = Random.Range(1, 4);
+            int b = Random.Range(1, 6);
             if(a==1 && spawnIndex<=spawnBoundary)
 			{
                 if(b==3)
