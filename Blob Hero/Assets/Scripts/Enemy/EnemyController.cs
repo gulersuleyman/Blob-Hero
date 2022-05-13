@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-
-
     PlayerController _player;
     NavMeshAgent _agent;
 
@@ -22,4 +20,5 @@ public class EnemyController : MonoBehaviour
     {
         _agent.destination = _player.transform.position;
     }
+
 }
