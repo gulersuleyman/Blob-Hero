@@ -33,7 +33,8 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Enemy"))
 		{
-			DecreaseFillAmount(collision.gameObject);
+			DecreaseFillAmount();
+			Destroy(collision.gameObject, 1f);
 		}
 		
 	}
@@ -41,7 +42,7 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Spear"))
 		{
-			DecreaseFillAmount(other.gameObject);
+			DecreaseFillAmount();
 			enemyAnim= other.gameObject.GetComponentInChildren<Animator>();
 			other.gameObject.GetComponent<EnemyController>().follow = false;
 			enemyAnim.SetBool("isSpear", true);
@@ -49,7 +50,7 @@ public class PlayerCollision : MonoBehaviour
 		}
 	}
 
-	void DecreaseFillAmount(GameObject other)
+	void DecreaseFillAmount()
 	{
 		fillAmount -= increaseFillAmount;
 		bar.fillAmount = fillAmount;
@@ -61,7 +62,7 @@ public class PlayerCollision : MonoBehaviour
 			canvas.gameObject.SetActive(false);
 
 		}
-		Destroy(other, 1f);
+		
 		
 	}
 }
