@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] GameObject enemy2Prefab;
     [SerializeField] Transform[] points;
     [SerializeField] Transform parent;
 
@@ -38,10 +39,20 @@ public class EnemySpawner : MonoBehaviour
 		for (int i = 0; i < points.Length; i++)
 		{
             int a= Random.Range(1, 3);
+            int b = Random.Range(1, 4);
             if(a==1 && spawnIndex<=spawnBoundary)
 			{
-                GameObject enemy= Instantiate(enemyPrefab, points[i].transform.position, Quaternion.identity);
-                enemy.transform.parent = parent;
+                if(b==3)
+				{
+                    GameObject enemy = Instantiate(enemy2Prefab, points[i].transform.position, Quaternion.identity);
+                    enemy.transform.parent = parent;
+                }
+                else
+				{
+                    GameObject enemy = Instantiate(enemyPrefab, points[i].transform.position, Quaternion.identity);
+                    enemy.transform.parent = parent;
+                }
+                
                 spawnIndex++;
 			}
 		}
