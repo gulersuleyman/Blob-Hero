@@ -464,7 +464,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.46205357, y: 1}
+    m_SensorSize: {x: 0.9, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1508,8 +1508,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 2.778502, z: 1}
-  m_Center: {x: 0, y: 1.9292514, z: 0}
+  m_Size: {x: 1.9388007, y: 2.778502, z: 1.7601093}
+  m_Center: {x: -0.092986405, y: 1.9292514, z: -0.38005465}
 --- !u!114 &1123683509
 MonoBehaviour:
   m_ObjectHideFlags: 0
