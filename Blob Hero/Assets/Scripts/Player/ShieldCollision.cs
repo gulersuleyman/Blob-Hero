@@ -9,9 +9,10 @@ public class ShieldCollision : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if(other.gameObject.CompareTag("Enemy"))
+		if(other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Spear"))
 		{
 			Destroy(other.gameObject);
+			//Experience
 		}
 	}
 }

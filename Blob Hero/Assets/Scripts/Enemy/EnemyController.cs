@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+
+    public bool follow=true;
+
     PlayerController _player;
     NavMeshAgent _agent;
 
@@ -18,7 +21,11 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
-        _agent.destination = _player.transform.position;
+        if(follow)
+		{
+            _agent.destination = _player.transform.position;
+        }
+        
     }
 
 }

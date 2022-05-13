@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 	float fillAmount;
 	float increaseFillAmount;
 
-
+	Animator enemyAnim;
 	AnimationController _animationController;
 
 	private void Awake()
@@ -33,16 +33,33 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if(collision.gameObject.CompareTag("Enemy"))
 		{
-			fillAmount -= increaseFillAmount;
-			bar.fillAmount = fillAmount;
-			if(fillAmount<0.07f)
-			{
-				fillAmount = 0;
-				bar.fillAmount = fillAmount;
-				_animationController.DeathAnimation(true);
-				canvas.gameObject.SetActive(false);
+			DecreaseFillAmount();
+		}
+		
+	}
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.gameObject.CompareTag("Spear"))
+		{
+			DecreaseFillAmount();
+			enemyAnim= other.gameObject.GetComponentInChildren<Animator>();
+			other.gameObject.GetComponent<EnemyController>().follow = false;
+			enemyAnim.SetBool("isSpear", true);
+			
+		}
+	}
 
-			}
+	void DecreaseFillAmount()
+	{
+		fillAmount -= increaseFillAmount;
+		bar.fillAmount = fillAmount;
+		if (fillAmount < 0.07f)
+		{
+			fillAmount = 0;
+			bar.fillAmount = fillAmount;
+			_animationController.DeathAnimation(true);
+			canvas.gameObject.SetActive(false);
+
 		}
 	}
 }
