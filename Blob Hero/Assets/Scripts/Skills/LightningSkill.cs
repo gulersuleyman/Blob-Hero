@@ -16,7 +16,7 @@ public class LightningSkill : MonoBehaviour
 		StartCoroutine(ActiveFalse());
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
 		if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Spear"))
 		{
@@ -24,11 +24,7 @@ public class LightningSkill : MonoBehaviour
 			{
 				canMove = false;
 				Vector3 targetPos = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
-				transform.DOMove(targetPos, 0.25f).OnComplete(() =>
-				{
-					Destroy(other.gameObject);
-					canMove = true;
-				});
+				LightningFly(targetPos, other.gameObject);
 			}
 			
 		}
@@ -38,5 +34,14 @@ public class LightningSkill : MonoBehaviour
 
 		yield return new WaitForSeconds(2f);
 		this.gameObject.SetActive(false);
+	}
+
+	void LightningFly(Vector3 pos,GameObject enemy)
+	{
+		transform.DOMove(pos, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
+		{
+			Destroy(enemy);
+			canMove = true;
+		});
 	}
 }
