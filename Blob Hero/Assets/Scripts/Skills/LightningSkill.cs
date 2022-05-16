@@ -24,7 +24,7 @@ public class LightningSkill : MonoBehaviour
 			{
 				canMove = false;
 				Vector3 targetPos = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
-				transform.DOMove(targetPos, 0.5f).OnComplete(() =>
+				transform.DOMove(targetPos, 0.25f).OnComplete(() =>
 				{
 					Destroy(other.gameObject);
 					canMove = true;
@@ -36,7 +36,7 @@ public class LightningSkill : MonoBehaviour
 	IEnumerator ActiveFalse()
 	{
 
-		yield return new WaitForSeconds(3f);
+		yield return new WaitForSeconds(2f);
 		this.gameObject.SetActive(false);
 	}
 }
