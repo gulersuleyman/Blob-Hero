@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+	[SerializeField] GameObject gameCanvas;
+	[SerializeField] GameObject startCanvas;
+	[SerializeField] GameObject levelUpCanvas;
+
+
+	GameObject lockImage;
+	public void FireGun()
+	{
+		ResetCanvases();
+		UnlockSkill("fireSkillImage",1);
+	}
+	public void Lightning()
+	{
+		ResetCanvases();
+		UnlockSkill("electricSkillImage",1);
+
+	}
+	public void TripleRocket()
+	{
+		ResetCanvases();
+		UnlockSkill("tripleSkillImage",1);
+	}
+	public void CircleSkill()
+	{
+		ResetCanvases();
+		UnlockSkill("circleSkillImage",1);
+	}
+	public void HealthSkill()
+	{
+		ResetCanvases();
+		UnlockSkill("healthSkillImage", 0);
+	}
+	public void TimeSkill()
+	{
+		ResetCanvases();
+		UnlockSkill("timeSkillImage", 0);
+	}
+	public void MagneticSkill()
+	{
+		ResetCanvases();
+		UnlockSkill("magneticSkillImage", 0);
+	}
+	public void SpeedSkill()
+	{
+		ResetCanvases();
+		UnlockSkill("speedSkillImage", 0);
+	}
+	void ResetCanvases()
+	{
+		gameCanvas.gameObject.SetActive(true);
+		startCanvas.gameObject.SetActive(false);
+		levelUpCanvas.gameObject.SetActive(false);
+	}
+	void UnlockSkill(string _str,int childIndex)
+	{
+		lockImage = GameObject.Find(_str).gameObject.transform.GetChild(childIndex).gameObject;
+		lockImage.gameObject.SetActive(false);
+	}
+
+}
