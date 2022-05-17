@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+    
     public GameObject coinPrefab;
     public GameObject effect;
     public bool follow=true;
@@ -34,7 +35,6 @@ public class EnemyController : MonoBehaviour
        Instantiate(coinPrefab, transform.position, Quaternion.identity); 
 
        GameObject e= Instantiate(effect.gameObject,transform.position, Quaternion.identity);
-       Destroy(e.gameObject, 1f);
 	}
 
 }
