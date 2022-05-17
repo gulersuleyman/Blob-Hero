@@ -310,7 +310,7 @@ Transform:
   m_GameObject: {fileID: 2213718047915589743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 13.991, y: -0.52947, z: 0.0029483}
-  m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6277235353596603616}
@@ -364,8 +364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd5c2a75a56c6b42b14b204bac0ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinPrefab: {fileID: 3228055023340672699, guid: 926f3353687e877498c7d30a07acf5ee, type: 3}
-  effect: {fileID: 6444230559552382986, guid: 29504fe00952b164c9027203581fe0b2, type: 3}
   follow: 1
 --- !u!1 &2667742230567142296
 GameObject:

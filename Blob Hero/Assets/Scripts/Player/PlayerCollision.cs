@@ -61,7 +61,6 @@ public class PlayerCollision : MonoBehaviour
 				_experiences.chapterBar.fillAmount += 0.05f;
 			}
 			Destroy(other.gameObject);
-			Debug.Log("dsdþfs");
 		}
 	}
 
