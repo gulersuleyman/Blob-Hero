@@ -55,6 +55,10 @@ public class PlayerCollision : MonoBehaviour
 		{
 			
 			_experiences.levelBar.fillAmount += 0.05f;
+			if(_experiences.levelBar.fillAmount>0.98f)
+			{
+				_experiences.levelBar.fillAmount = 0;
+			}
 			Destroy(other.gameObject);
 			Debug.Log("dsdþfs");
 		}
