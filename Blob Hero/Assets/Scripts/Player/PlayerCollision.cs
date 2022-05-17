@@ -11,17 +11,20 @@ public class PlayerCollision : MonoBehaviour
 	float fillAmount;
 	float increaseFillAmount;
 
+	GameCanvasUI _experiences;
 	Animator enemyAnim;
 	AnimationController _animationController;
 
 	private void Awake()
 	{
 		_animationController = GetComponent<AnimationController>();
+		_experiences = FindObjectOfType<GameCanvasUI>();
 	}
 	private void Start()
 	{
 		increaseFillAmount = 0.05f;
 		fillAmount = 1;
+		
 	}
 
 	private void Update()
@@ -47,6 +50,13 @@ public class PlayerCollision : MonoBehaviour
 			other.gameObject.GetComponent<EnemyController>().follow = false;
 			enemyAnim.SetBool("isSpear", true);
 			
+		}
+		if(other.gameObject.CompareTag("Coin"))
+		{
+			
+			_experiences.levelBar.fillAmount += 0.05f;
+			Destroy(other.gameObject);
+			Debug.Log("dsdþfs");
 		}
 	}
 

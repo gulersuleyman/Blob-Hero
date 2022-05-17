@@ -38835,8 +38835,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5bfcf1301a832649889e44dd6853b09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelBar: {fileID: 0}
-  chapterBar: {fileID: 0}
+  levelBar: {fileID: 528381026}
+  chapterBar: {fileID: 580951548}
 --- !u!1 &1673375518
 GameObject:
   m_ObjectHideFlags: 0
