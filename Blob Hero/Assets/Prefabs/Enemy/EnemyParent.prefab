@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd5c2a75a56c6b42b14b204bac0ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 3228055023340672699, guid: 926f3353687e877498c7d30a07acf5ee, type: 3}
   effect: {fileID: 6336620038311931856, guid: 63004496925a9524999f6c5adf4268cb, type: 3}
   follow: 1
 --- !u!195 &2837033797323112

@@ -364,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cd5c2a75a56c6b42b14b204bac0ff74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPrefab: {fileID: 3228055023340672699, guid: 926f3353687e877498c7d30a07acf5ee, type: 3}
   effect: {fileID: 6444230559552382986, guid: 29504fe00952b164c9027203581fe0b2, type: 3}
   follow: 1
 --- !u!1 &2667742230567142296
