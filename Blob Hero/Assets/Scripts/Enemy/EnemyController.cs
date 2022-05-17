@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
-
+    public GameObject effect;
     public bool follow=true;
 
     PlayerController _player;
@@ -27,5 +27,12 @@ public class EnemyController : MonoBehaviour
         }
         
     }
+
+	private void OnDestroy()
+	{
+        
+       GameObject e= Instantiate(effect.gameObject,transform.position, Quaternion.identity);
+       Destroy(e.gameObject, 1f);
+	}
 
 }
