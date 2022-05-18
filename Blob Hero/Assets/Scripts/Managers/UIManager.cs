@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+
 	[SerializeField] GameObject gameCanvas;
 	[SerializeField] GameObject startCanvas;
 	[SerializeField] GameObject levelUpCanvas;
@@ -56,10 +58,12 @@ public class UIManager : MonoBehaviour
 		gameCanvas.gameObject.SetActive(true);
 		startCanvas.gameObject.SetActive(false);
 		levelUpCanvas.gameObject.SetActive(false);
+		Time.timeScale = 1f;
 	}
 	void UnlockSkill(string _str,int childIndex)
 	{
 		lockImage = GameObject.Find(_str).gameObject.transform.GetChild(childIndex).gameObject;
+		GameObject.Find(_str).gameObject.GetComponent<LockControl>().unLocked = true;
 		lockImage.gameObject.SetActive(false);
 	}
 

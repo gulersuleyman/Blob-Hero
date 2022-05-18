@@ -7,4 +7,8 @@ public class GameCanvasUI : MonoBehaviour
 {
     public Image levelBar;
     public Image chapterBar;
+
+    public Text levelText;
+    public Text chapterText;
+    
 }

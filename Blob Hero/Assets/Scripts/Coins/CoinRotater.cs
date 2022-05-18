@@ -4,10 +4,15 @@ using UnityEngine;
 using DG.Tweening;
 public class CoinRotater : MonoBehaviour
 {
-    
+    float firstPosY;
     void Start()
     {
+        firstPosY = transform.position.y;
         RotateCoin();
+        transform.DOMoveY(transform.position.y + 5f, 0.25f).OnComplete(() =>
+           {
+               transform.DOMoveY(firstPosY, 0.25f);
+           });
     }
     void RotateCoin()
 	{
