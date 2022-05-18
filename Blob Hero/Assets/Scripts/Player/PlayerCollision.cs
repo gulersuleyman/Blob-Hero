@@ -8,7 +8,7 @@ public class PlayerCollision : MonoBehaviour
 	[SerializeField] GameObject levelUpCanvas;
 	[SerializeField] GameObject canvas;
 	[SerializeField] Image bar;
-
+	[SerializeField] Text levelIndexText;
 
 	int levelIndex;
 	int chapterIndex;
@@ -80,6 +80,7 @@ public class PlayerCollision : MonoBehaviour
 					_experiences.chapterText.text = "CHAPTER " + chapterIndex;
 				}
 				levelUpCanvas.gameObject.SetActive(true);
+				levelIndexText.text = levelIndex.ToString();
 				Time.timeScale = 0;
 
 			}

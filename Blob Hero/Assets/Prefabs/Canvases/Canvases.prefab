@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6604634580607834538}
   - component: {fileID: 6604634580607834539}
   m_Layer: 0
-  m_Name: Text (Legacy) (1)
+  m_Name: levelText (Legacy) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,6 +411,7 @@ GameObject:
   - component: {fileID: 6604634580865788454}
   - component: {fileID: 6604634580865788472}
   - component: {fileID: 6604634580865788473}
+  - component: {fileID: 973689874}
   m_Layer: 0
   m_Name: fireSkillImage
   m_TagString: Untagged
@@ -435,9 +436,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -133.7, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -133.7, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634580865788472
@@ -478,6 +479,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &973689874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634580865788455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634580949642200
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +503,7 @@ GameObject:
   - component: {fileID: 6604634580949642203}
   - component: {fileID: 6604634580949642205}
   - component: {fileID: 6604634580949642202}
+  - component: {fileID: 554620405}
   m_Layer: 0
   m_Name: magneticSkillImage
   m_TagString: Untagged
@@ -512,9 +527,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 96.15997, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 96.15997, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634580949642205
@@ -555,6 +570,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &554620405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634580949642200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634580959150062
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +594,7 @@ GameObject:
   - component: {fileID: 6604634580959150049}
   - component: {fileID: 6604634580959150051}
   - component: {fileID: 6604634580959150048}
+  - component: {fileID: 546947531}
   m_Layer: 0
   m_Name: tripleSkillImage
   m_TagString: Untagged
@@ -590,9 +619,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -57.221027, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -57.221027, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634580959150051
@@ -633,6 +662,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &546947531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634580959150062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634580959846012
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6604634581001786033
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1196,6 +1238,7 @@ GameObject:
   - component: {fileID: 6604634581220074339}
   - component: {fileID: 6604634581220074341}
   - component: {fileID: 6604634581220074338}
+  - component: {fileID: 288316749}
   m_Layer: 0
   m_Name: timeSkillImage
   m_TagString: Untagged
@@ -1219,9 +1262,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 57.92198, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 57.92198, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581220074341
@@ -1262,6 +1305,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &288316749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634581220074336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634581247184713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1296,9 +1352,9 @@ RectTransform:
   m_Father: {fileID: 6604634582049112615}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 879.7197}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -179.28027}
   m_SizeDelta: {x: 1536, y: 384}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581247184714
@@ -1774,7 +1830,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 407}
+  m_AnchoredPosition: {x: 0, y: 538}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581487722076
@@ -1920,9 +1976,9 @@ RectTransform:
   m_Father: {fileID: 6604634582049112615}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 836}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -223}
   m_SizeDelta: {x: 1140, y: 166}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581578778298
@@ -2261,6 +2317,7 @@ GameObject:
   - component: {fileID: 6604634581719207342}
   - component: {fileID: 6604634581719207328}
   - component: {fileID: 6604634581719207329}
+  - component: {fileID: 2003776394}
   m_Layer: 0
   m_Name: circleSkillImage
   m_TagString: Untagged
@@ -2285,9 +2342,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.982327, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -18.982327, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581719207328
@@ -2328,6 +2385,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2003776394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634581719207343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634581767111118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2409,7 @@ GameObject:
   - component: {fileID: 6604634581767111105}
   - component: {fileID: 6604634581767111107}
   - component: {fileID: 6604634581767111104}
+  - component: {fileID: 1890598891}
   m_Layer: 0
   m_Name: healthSkillImage
   m_TagString: Untagged
@@ -2362,9 +2433,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 19.3, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 19.3, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634581767111107
@@ -2405,6 +2476,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1890598891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634581767111118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634581768950921
 GameObject:
   m_ObjectHideFlags: 0
@@ -2589,6 +2673,7 @@ GameObject:
   - component: {fileID: 6604634581816463406}
   - component: {fileID: 6604634581816463407}
   - component: {fileID: 6604634581816463404}
+  - component: {fileID: 2107846152}
   m_Layer: 0
   m_Name: LevelUpCanvas
   m_TagString: Untagged
@@ -2686,6 +2771,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &2107846152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634581816463402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cf00ca69ed1c2442bc475289a6a793f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillButtonPrefabs:
+  - {fileID: 8399537001610715034, guid: af7bb9f3181efdf45ae36ced70671824, type: 3}
+  - {fileID: 4408120634340294707, guid: 57f4685bc3c41bb43932f6067f406c85, type: 3}
+  - {fileID: 6656325246928167365, guid: 7c145cebf8903f84993a1d18787e4a9e, type: 3}
+  - {fileID: 6078278824794634467, guid: c117478a071aa3d4ba065d23e6de1a44, type: 3}
+  - {fileID: 3878259360708614788, guid: 21d07b89f32fe844f851f7ccbf752269, type: 3}
+  - {fileID: 4326125567742382041, guid: f2807bd80ae325a4d984113c109ff230, type: 3}
+  - {fileID: 4279390318940531948, guid: 18fd0ea92fd5d104494f247d27fad057, type: 3}
+  - {fileID: 6051418236640993803, guid: 7655b30ccbdfbf945b09c7bab1c7e6ba, type: 3}
 --- !u!1 &6604634581841908277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,7 +3246,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6604634581557786731}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: MagneticSkill
+        m_MethodName: HealthSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3304,7 +3410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6604634582049112615
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3404,8 +3510,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelBar: {fileID: 6604634581317651019}
   chapterBar: {fileID: 6604634580994352085}
-  levelText: {fileID: 0}
-  chapterText: {fileID: 0}
+  levelText: {fileID: 6604634582445743585}
+  chapterText: {fileID: 6604634582192099802}
 --- !u!1 &6604634582089629867
 GameObject:
   m_ObjectHideFlags: 0
@@ -3747,9 +3853,9 @@ RectTransform:
   m_Father: {fileID: 6604634582049112615}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 881.34}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -177.65997}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634582192099805
@@ -3920,9 +4026,9 @@ RectTransform:
   m_Father: {fileID: 6604634582049112615}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 137.19998, y: 809}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 137.19998, y: -250}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634582303568221
@@ -4967,6 +5073,7 @@ GameObject:
   - component: {fileID: 6604634582731615136}
   - component: {fileID: 6604634582731615138}
   - component: {fileID: 6604634582731615139}
+  - component: {fileID: 1261901196}
   m_Layer: 0
   m_Name: electricSkillImage
   m_TagString: Untagged
@@ -4991,9 +5098,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -95.45903, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -95.45903, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634582731615138
@@ -5034,6 +5141,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1261901196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634582731615137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1 &6604634582740687892
 GameObject:
   m_ObjectHideFlags: 0
@@ -5045,6 +5165,7 @@ GameObject:
   - component: {fileID: 6604634582740687895}
   - component: {fileID: 6604634582740687977}
   - component: {fileID: 6604634582740687894}
+  - component: {fileID: 1246339649}
   m_Layer: 0
   m_Name: speedSkillImage
   m_TagString: Untagged
@@ -5068,9 +5189,9 @@ RectTransform:
   m_Father: {fileID: 6604634581200662598}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 134.39868, y: 924}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 134.39868, y: -135}
   m_SizeDelta: {x: 264, y: 261}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6604634582740687977
@@ -5111,6 +5232,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1246339649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6604634582740687892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126484b1cc99da444aff261cce0588d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unLocked: 0
 --- !u!1001 &6604634581668237982
 PrefabInstance:
   m_ObjectHideFlags: 0
