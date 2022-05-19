@@ -6,14 +6,15 @@ public class FireSkill : MonoBehaviour
 {
 	ShieldCollision _shield;
 
+
 	
-		
 	
 
 	private void OnEnable()
 	{
 		_shield = FindObjectOfType<ShieldCollision>();
 		StartCoroutine(ActiveFalse());
+		
 	}
 	private void OnTriggerEnter(Collider other)
 	{
@@ -35,6 +36,7 @@ public class FireSkill : MonoBehaviour
 	{
 
 		yield return new WaitForSeconds(5f);
+		
 		this.gameObject.SetActive(false);
 	}
 }

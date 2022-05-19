@@ -11,16 +11,17 @@ public class SkillActiver : MonoBehaviour
 
     
     LockControl _lock;
-
+    PlayerCollision _playercollision;
     void Awake()
     {
         _lock = GetComponent<LockControl>();
+        _playercollision = FindObjectOfType<PlayerCollision>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(_lock.unLocked)
+        if(_lock.unLocked && !_playercollision.stopActiver && !skill.gameObject.activeSelf)
 		{
             timerImage.fillAmount -= 0.001f;
             if(timerImage.fillAmount<=0)

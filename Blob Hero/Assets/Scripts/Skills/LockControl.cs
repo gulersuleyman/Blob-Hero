@@ -5,4 +5,6 @@ using UnityEngine;
 public class LockControl : MonoBehaviour
 {
     public bool unLocked = false;
+
+    
 }

@@ -12,6 +12,11 @@ public class UIManager : MonoBehaviour
 
 
 	GameObject lockImage;
+	PlayerCollision _playerCollision;
+	private void Awake()
+	{
+		_playerCollision = FindObjectOfType<PlayerCollision>();
+	}
 	public void FireGun()
 	{
 		ResetCanvases();
@@ -58,6 +63,7 @@ public class UIManager : MonoBehaviour
 		gameCanvas.gameObject.SetActive(true);
 		startCanvas.gameObject.SetActive(false);
 		levelUpCanvas.gameObject.SetActive(false);
+		_playerCollision.stopActiver = false;
 		Time.timeScale = 1f;
 	}
 	void UnlockSkill(string _str,int childIndex)
