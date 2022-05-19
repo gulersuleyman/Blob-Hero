@@ -67,8 +67,19 @@ public class PlayerCollision : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag("Coin"))
 		{
+			if(levelIndex==1)
+			{
+				_experiences.levelBar.fillAmount += 0.05f;
+			}
+			if(levelIndex==2)
+			{
+				_experiences.levelBar.fillAmount += 0.025f;
+			}
+			else
+			{
+				_experiences.levelBar.fillAmount += 0.02f;
+			}
 			
-			_experiences.levelBar.fillAmount += 0.05f;
 			if(_experiences.levelBar.fillAmount>0.98f)
 			{
 				levelIndex++;
