@@ -24694,9 +24694,9 @@ MonoBehaviour:
   m_LookAt: {fileID: 1123683505}
   m_Follow: {fileID: 1123683505}
   m_Lens:
-    FieldOfView: 88
+    FieldOfView: 80
     OrthographicSize: 5
-    NearClipPlane: 0.3
+    NearClipPlane: 0.03
     FarClipPlane: 100
     Dutch: 0
     ModeOverride: 0
@@ -25719,9 +25719,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.03
   far clip plane: 100
-  field of view: 88
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -128826,18 +128826,34 @@ PrefabInstance:
       propertyPath: skill
       value: 
       objectReference: {fileID: 1469294275}
+    - target: {fileID: 435240506, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: timeBoundary
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1469348727, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: skill
       value: 
       objectReference: {fileID: 4685948745045017494}
+    - target: {fileID: 1469348727, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: timeBoundary
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1624714480, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: skill
       value: 
       objectReference: {fileID: 980463403}
+    - target: {fileID: 1624714480, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: timeBoundary
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2026565591, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: skill
       value: 
       objectReference: {fileID: 1134189594}
+    - target: {fileID: 2026565591, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: timeBoundary
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6604634581557786728, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -128885,6 +128901,14 @@ PrefabInstance:
     - target: {fileID: 6604634581557786729, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: m_Name
       value: Canvases
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634582360214126, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634582511504649, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}

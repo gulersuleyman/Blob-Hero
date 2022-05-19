@@ -10,6 +10,7 @@ public class SkillActiver : MonoBehaviour
     [SerializeField] float timeBoundary;
 
     
+
     LockControl _lock;
     PlayerCollision _playercollision;
     void Awake()
@@ -23,12 +24,14 @@ public class SkillActiver : MonoBehaviour
     {
         if(_lock.unLocked && !_playercollision.stopActiver && !skill.gameObject.activeSelf)
 		{
-            timerImage.fillAmount -= 0.001f;
-            if(timerImage.fillAmount<=0)
+         
+            timerImage.fillAmount -= 1/timeBoundary*Time.deltaTime;
+            if (timerImage.fillAmount<=0)
 			{
                 skill.gameObject.SetActive(true);
                 timerImage.fillAmount = 1;
 			}
+            
 		}
     }
 }
