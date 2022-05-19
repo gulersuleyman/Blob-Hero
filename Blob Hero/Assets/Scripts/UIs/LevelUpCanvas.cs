@@ -24,6 +24,33 @@ public class LevelUpCanvas : MonoBehaviour
 
 				buttonCount++;
 			}
+			if(buttonCount==2 && !skillButtonPrefabs[i].gameObject.activeSelf)
+			{
+				skillButtonPrefabs[i].gameObject.SetActive(true);
+				skillButtonPrefabs[i].transform.position = right.position;
+			}
+		}
+		for (int i = 4; i < 8; i++)
+		{
+			if (buttonCount == 2 && !skillButtonPrefabs[i].gameObject.activeSelf)
+			{
+				skillButtonPrefabs[i].gameObject.SetActive(true);
+				skillButtonPrefabs[i].transform.position = right.position;
+				buttonCount++;
+			}
+			if (buttonCount == 1 && !skillButtonPrefabs[i].gameObject.activeSelf)
+			{
+				skillButtonPrefabs[i].gameObject.SetActive(true);
+				skillButtonPrefabs[i].transform.position = middle.position;
+				buttonCount++;
+			}
+			if (buttonCount == 0 && !skillButtonPrefabs[i].gameObject.activeSelf)
+			{
+				skillButtonPrefabs[i].gameObject.SetActive(true);
+				skillButtonPrefabs[i].transform.position = left.position;
+				buttonCount++;
+			}
+
 		}
 	}
 }
