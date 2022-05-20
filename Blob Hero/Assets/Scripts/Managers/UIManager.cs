@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
-
-	[SerializeField] GameObject gameCanvas;
+	[SerializeField] GameObject restartCanvas;
+	public GameObject gameCanvas;
 	[SerializeField] GameObject startCanvas;
 	[SerializeField] GameObject levelUpCanvas;
-
+	[SerializeField] GameObject continueCanvas;
+	public GameObject stopButton;
 
 	GameObject lockImage;
 	PlayerCollision _playerCollision;
@@ -64,6 +65,7 @@ public class UIManager : MonoBehaviour
 		startCanvas.gameObject.SetActive(false);
 		levelUpCanvas.gameObject.SetActive(false);
 		_playerCollision.stopActiver = false;
+		stopButton.gameObject.SetActive(true);
 		Time.timeScale = 1f;
 	}
 	void UnlockSkill(string _str,int childIndex)
@@ -71,6 +73,28 @@ public class UIManager : MonoBehaviour
 		lockImage = GameObject.Find(_str).gameObject.transform.GetChild(childIndex).gameObject;
 		GameObject.Find(_str).gameObject.GetComponent<LockControl>().unLocked = true;
 		lockImage.gameObject.SetActive(false);
+	}
+	public void StopGame()
+	{
+		continueCanvas.gameObject.SetActive(true);
+		stopButton.gameObject.SetActive(false);
+		Time.timeScale = 0;
+	}
+	public void ContinueGame()
+	{
+		Time.timeScale = 1f;
+		stopButton.gameObject.SetActive(true);
+		continueCanvas.gameObject.SetActive(false);
+	}
+	public void OpenRestartCanvas()
+	{
+		stopButton.gameObject.SetActive(false);
+		restartCanvas.gameObject.SetActive(true);
+		gameCanvas.gameObject.SetActive(false);
+	}
+	public void lateOpen()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 	}
 
 }

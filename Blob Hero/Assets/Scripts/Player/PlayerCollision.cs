@@ -21,13 +21,14 @@ public class PlayerCollision : MonoBehaviour
 	GameCanvasUI _experiences;
 	Animator enemyAnim;
 	AnimationController _animationController;
-
+	UIManager _UImanager;
 	private void Awake()
 	{
 		levelIndex = 1;
 		chapterIndex = 1;
 		_animationController = GetComponent<AnimationController>();
 		_experiences = FindObjectOfType<GameCanvasUI>();
+		_UImanager = FindObjectOfType<UIManager>();
 	}
 	private void OnEnable()
 	{
@@ -93,6 +94,7 @@ public class PlayerCollision : MonoBehaviour
 					_experiences.chapterText.text = "CHAPTER " + chapterIndex;
 				}
 				levelUpCanvas.gameObject.SetActive(true);
+				_UImanager.stopButton.gameObject.SetActive(false);
 				levelIndexText.text = levelIndex.ToString();
 				stopActiver = true;
 				Time.timeScale = 0;
@@ -106,15 +108,22 @@ public class PlayerCollision : MonoBehaviour
 	{
 		fillAmount -= increaseFillAmount;
 		bar.fillAmount = fillAmount;
-		if (fillAmount < 0.07f)
+		if (fillAmount < 0.06f)
 		{
 			fillAmount = 0;
 			bar.fillAmount = fillAmount;
 			_animationController.DeathAnimation(true);
 			canvas.gameObject.SetActive(false);
-
+			_UImanager.OpenRestartCanvas();
+			StartCoroutine(StopGame());
 		}
 		
 		
+	}
+
+	IEnumerator StopGame()
+	{
+		yield return new WaitForSeconds(0.8f);
+		Time.timeScale = 0;
 	}
 }
