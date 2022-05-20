@@ -25,15 +25,19 @@ public class PlayerController : MonoBehaviour
         Vector3 direction = Vector3.forward * _joystick.Vertical + Vector3.right * _joystick.Horizontal;
         if(direction.x>0.1f || direction.z>0.1f || direction.x < -0.1f || direction.z < -0.1f)
 		{
-           // _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
+            _rigidbody.isKinematic = false;
+            // _rigidbody.AddForce(direction * _moveSpeed * Time.fixedDeltaTime, ForceMode.Impulse);
             _rigidbody.velocity= direction * _moveSpeed * Time.fixedDeltaTime;
             _animationcontroller.WalkAnimation(true);
         }
+        
         if(direction == Vector3.zero)
 		{
             _animationcontroller.WalkAnimation(false);
-		}
-        
+            _rigidbody.isKinematic = true;
+        }
+       
+       
         
     }
 }

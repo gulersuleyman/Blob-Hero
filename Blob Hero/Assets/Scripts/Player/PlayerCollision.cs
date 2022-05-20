@@ -47,17 +47,15 @@ public class PlayerCollision : MonoBehaviour
 		canvas.transform.LookAt(Camera.main.transform.position);
 	}
 
-	private void OnCollisionEnter(Collision collision)
-	{
-		if(collision.gameObject.CompareTag("Enemy"))
-		{
-			DecreaseFillAmount();
-			Destroy(collision.gameObject, 1f);
-		}
-		
-	}
+	
 	private void OnTriggerEnter(Collider other)
 	{
+		if (other.gameObject.CompareTag("Enemy"))
+		{
+			DecreaseFillAmount();
+			other.gameObject.GetComponent<EnemyController>().follow = false;
+			Destroy(other.gameObject, 1f);
+		}
 		if (other.gameObject.CompareTag("Spear"))
 		{
 			DecreaseFillAmount();
@@ -101,6 +99,22 @@ public class PlayerCollision : MonoBehaviour
 
 			}
 			Destroy(other.gameObject);
+		}
+	}
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.gameObject.CompareTag("Enemy"))
+		{
+			
+			other.gameObject.GetComponent<EnemyController>().follow = true;
+			
+		}
+		if (other.gameObject.CompareTag("Spear"))
+		{
+			
+			other.gameObject.GetComponent<EnemyController>().follow = true;
+			
+
 		}
 	}
 
