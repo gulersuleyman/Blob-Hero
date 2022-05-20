@@ -129,6 +129,7 @@ public class PlayerCollision : MonoBehaviour
 			_animationController.DeathAnimation(true);
 			canvas.gameObject.SetActive(false);
 			_UImanager.OpenRestartCanvas();
+			stopActiver = true;
 			StartCoroutine(StopGame());
 		}
 		
@@ -138,6 +139,6 @@ public class PlayerCollision : MonoBehaviour
 	IEnumerator StopGame()
 	{
 		yield return new WaitForSeconds(0.8f);
-		Time.timeScale = 0;
+		
 	}
 }
