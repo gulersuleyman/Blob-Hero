@@ -66,7 +66,8 @@ public class PlayerCollision : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag("Coin"))
 		{
-			if(levelIndex==1)
+			GameManager.Instance.GameStart();
+			if (levelIndex==1)
 			{
 				_experiences.levelBar.fillAmount += 0.05f;
 			}
@@ -81,6 +82,7 @@ public class PlayerCollision : MonoBehaviour
 			
 			if(_experiences.levelBar.fillAmount>0.98f)
 			{
+				GameManager.Instance.LevelCompleted();
 				levelIndex++;
 				_experiences.levelText.text = "LEVEL " + levelIndex;
 				_experiences.levelBar.fillAmount = 0;
@@ -131,6 +133,7 @@ public class PlayerCollision : MonoBehaviour
 			_UImanager.OpenRestartCanvas();
 			stopActiver = true;
 			StartCoroutine(StopGame());
+			GameManager.Instance.LevelFailed();
 		}
 		
 		

@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using GameAnalyticsSDK;
+using ElephantSDK;
 public class GameManager : MonoBehaviour
 {
     
-
+    
     public float levelExperience;
     public float chapterExperience;
 
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        GameAnalytics.Initialize();
         Time.timeScale = 0f;
         
         SingletonThisGameObject();
@@ -30,6 +33,21 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+    public void GameStart()
+	{
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, PlayerPrefs.GetInt("level").ToString());
+        Elephant.LevelStarted(PlayerPrefs.GetInt("level"));
+    }
+    public void LevelCompleted()
+	{
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, PlayerPrefs.GetInt("level").ToString());
+        Elephant.LevelCompleted(PlayerPrefs.GetInt("level"));
+    }
+    public void LevelFailed()
+	{
+        GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, PlayerPrefs.GetInt("level").ToString());
+        Elephant.LevelFailed(PlayerPrefs.GetInt("level"));
     }
    
     
