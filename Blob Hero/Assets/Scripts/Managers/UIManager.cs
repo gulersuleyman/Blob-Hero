@@ -7,6 +7,7 @@ public class UIManager : MonoBehaviour
 {
 	[SerializeField] float decreaseTimeValue;
 	[SerializeField] float moveSpeedIncreaseValue;
+	[HideInInspector]
 	public float moveSpeedIncreaser;
 	[SerializeField] float coinDistanceIncreaser;
 	[SerializeField] GameObject restartCanvas;

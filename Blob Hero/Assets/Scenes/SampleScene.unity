@@ -24557,6 +24557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f9d4515a5e0d34f897494fa86736ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   levelExperience: 0
   chapterExperience: 0
 --- !u!4 &217093386
@@ -24718,7 +24719,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302690734}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000007454835, z: 0.000000004421657, w: 0.86009014}
+  m_LocalRotation: {x: 0.5101421, y: -0.000000040546492, z: 0.000000024049193, w: 0.86009014}
   m_LocalPosition: {x: 0, y: 64.95, z: -36.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25746,7 +25747,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000007454835, z: 0.000000004421657, w: 0.86009014}
+  m_LocalRotation: {x: 0.5101421, y: -0.000000040546492, z: 0.000000024049193, w: 0.86009014}
   m_LocalPosition: {x: 0, y: 64.95, z: -36.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30837,6 +30838,7 @@ MonoBehaviour:
   bar: {fileID: 1868681114}
   levelIndexText: {fileID: 888506033}
   stopActiver: 0
+  decreaseFillAmount: 0
 --- !u!1 &1132227107
 GameObject:
   m_ObjectHideFlags: 0
@@ -128885,6 +128887,22 @@ PrefabInstance:
     - target: {fileID: 6604634581557786729, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
       propertyPath: m_Name
       value: Canvases
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581557786731, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: coinDistance.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581557786731, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: decreaseTimeValue
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581557786731, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: coinDistanceIncreaser
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581557786731, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: moveSpeedIncreaseValue
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
