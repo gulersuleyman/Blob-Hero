@@ -16,12 +16,13 @@ public class PlayerCollision : MonoBehaviour
 	int chapterIndex;
 
 	float fillAmount;
-	float increaseFillAmount;
+	public float decreaseFillAmount;
 
 	GameCanvasUI _experiences;
 	Animator enemyAnim;
 	AnimationController _animationController;
 	UIManager _UImanager;
+	
 	private void Awake()
 	{
 		levelIndex = 1;
@@ -29,6 +30,7 @@ public class PlayerCollision : MonoBehaviour
 		_animationController = GetComponent<AnimationController>();
 		_experiences = FindObjectOfType<GameCanvasUI>();
 		_UImanager = FindObjectOfType<UIManager>();
+		
 	}
 	private void OnEnable()
 	{
@@ -37,7 +39,7 @@ public class PlayerCollision : MonoBehaviour
 	}
 	private void Start()
 	{
-		increaseFillAmount = 0.05f;
+		decreaseFillAmount = 0.05f;
 		fillAmount = 1;
 		
 	}
@@ -122,10 +124,11 @@ public class PlayerCollision : MonoBehaviour
 
 	void DecreaseFillAmount()
 	{
-		fillAmount -= increaseFillAmount;
+		fillAmount -= decreaseFillAmount;
 		bar.fillAmount = fillAmount;
-		if (fillAmount < 0.06f)
+		if (fillAmount <= 0.06f)
 		{
+			GameManager.Instance.isDead = true;
 			fillAmount = 0;
 			bar.fillAmount = fillAmount;
 			_animationController.DeathAnimation(true);

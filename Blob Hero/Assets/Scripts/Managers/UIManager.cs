@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+	[SerializeField] float decreaseTimeValue;
+	[SerializeField] float moveSpeedIncreaseValue;
+	public float moveSpeedIncreaser;
+	[SerializeField] float coinDistanceIncreaser;
 	[SerializeField] GameObject restartCanvas;
 	public GameObject gameCanvas;
 	[SerializeField] GameObject startCanvas;
@@ -12,11 +16,21 @@ public class UIManager : MonoBehaviour
 	[SerializeField] GameObject continueCanvas;
 	public GameObject stopButton;
 
+
+	public Vector3 coinDistance = Vector3.zero;
+
+
 	GameObject lockImage;
 	PlayerCollision _playerCollision;
+	SkillActiver[] _skillActivers;
 	private void Awake()
 	{
 		_playerCollision = FindObjectOfType<PlayerCollision>();
+		_skillActivers = FindObjectsOfType<SkillActiver>();
+		coinDistanceIncreaser = 0.003f;
+		moveSpeedIncreaser = 0;
+		moveSpeedIncreaseValue = 0;
+		decreaseTimeValue = 0;
 	}
 	public void FireGun()
 	{
@@ -41,21 +55,28 @@ public class UIManager : MonoBehaviour
 	}
 	public void HealthSkill()
 	{
+		_playerCollision.decreaseFillAmount -= 0.005f;
 		ResetCanvases();
 		UnlockSkill("healthSkillImage", 0);
 	}
 	public void TimeSkill()
 	{
+		foreach (var skill in _skillActivers)
+		{
+			skill.decreaseTimeValue += decreaseTimeValue;
+		}
 		ResetCanvases();
 		UnlockSkill("timeSkillImage", 0);
 	}
 	public void MagneticSkill()
 	{
+		coinDistance += new Vector3(coinDistanceIncreaser, coinDistanceIncreaser, coinDistanceIncreaser);
 		ResetCanvases();
 		UnlockSkill("magneticSkillImage", 0);
 	}
 	public void SpeedSkill()
 	{
+		moveSpeedIncreaser += moveSpeedIncreaseValue;
 		ResetCanvases();
 		UnlockSkill("speedSkillImage", 0);
 	}

@@ -6,7 +6,7 @@ using GameAnalyticsSDK;
 using ElephantSDK;
 public class GameManager : MonoBehaviour
 {
-    
+    public bool isDead;
     
     public float levelExperience;
     public float chapterExperience;

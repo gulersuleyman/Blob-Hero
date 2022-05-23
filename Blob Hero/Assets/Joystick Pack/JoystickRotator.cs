@@ -58,7 +58,7 @@ public class JoystickRotator : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Working)
+        if (Working && !GameManager.Instance.isDead)
         {
             AllProcess();
 

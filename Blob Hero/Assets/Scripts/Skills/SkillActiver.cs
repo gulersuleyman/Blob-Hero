@@ -5,9 +5,13 @@ using UnityEngine.UI;
 public class SkillActiver : MonoBehaviour
 {
 
+    public float decreaseTimeValue;
+
     [SerializeField] GameObject skill;
     [SerializeField] Image timerImage;
     [SerializeField] float timeBoundary;
+
+
 
     
 
@@ -15,6 +19,7 @@ public class SkillActiver : MonoBehaviour
     PlayerCollision _playercollision;
     void Awake()
     {
+        decreaseTimeValue = 0;
         _lock = GetComponent<LockControl>();
         _playercollision = FindObjectOfType<PlayerCollision>();
     }
@@ -25,7 +30,7 @@ public class SkillActiver : MonoBehaviour
         if(_lock.unLocked && !_playercollision.stopActiver && !skill.gameObject.activeSelf)
 		{
          
-            timerImage.fillAmount -= 1/timeBoundary*Time.deltaTime;
+            timerImage.fillAmount -= 1/(timeBoundary-decreaseTimeValue)*Time.deltaTime;
             if (timerImage.fillAmount<=0)
 			{
                 skill.gameObject.SetActive(true);
