@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using ElephantSdkManager.Model;
 using ElephantSdkManager.Util;
 using UnityEditor;
@@ -27,6 +28,7 @@ namespace ElephantSdkManager
         private string _selfUpdateStatus;
         private bool _canUpdateSelf = false;
         private Sdk selfUpdateSdk;
+        public string requiredSdks = "";
 
         private GUIStyle _labelStyle;
         private GUIStyle _headerStyle;
@@ -65,6 +67,7 @@ namespace ElephantSdkManager
         {
             _editorCoroutine = this.StartCoroutine(FetchManifest());
             _editorCoroutineSelfUpdate = this.StartCoroutine(CheckSelfUpdate());
+            AssetDatabase.importPackageCompleted += OnImportPackageCompleted;
         }
 
         void OnDisable()
@@ -78,6 +81,10 @@ namespace ElephantSdkManager
 
             if (_sdkList != null && _sdkList.Count > 0)
             {
+                if (Directory.Exists(AssetsPathPrefix + "MoPub"))
+                {
+                    RemoveMoPub();
+                }
                 using (new EditorGUILayout.VerticalScope("box"))
                 using (var s = new EditorGUILayout.ScrollViewScope(_scrollPos, false, false))
                 {
@@ -88,7 +95,27 @@ namespace ElephantSdkManager
                         .Select(group => group.ToList())
                         .ToList();
 
-                    PopulateGroupSdks(groupedSdkList[0], "Elephant SDKs");
+                   foreach (var groupSdk in groupedSdkList)
+                   {
+                       switch (groupSdk[0].type)
+                       {
+                           case "internal":
+                               PopulateGroupSdks(groupSdk, "Elephant SDKs");
+                               break;
+                           case "is":
+                               PopulateGroupSdks(groupSdk, "IronSource");
+                               break;
+                           case "max":
+                               PopulateGroupSdks(groupSdk, "Applovin MAX");
+                               break;
+                           case "network":
+                               PopulateGroupSdks(groupSdk, "Networks");
+                               break;
+                           default:
+                               PopulateGroupSdks(groupSdk, "Elephant SDKs");
+                               break;
+                       }
+                   }
                 }
             }
 
@@ -134,10 +161,53 @@ namespace ElephantSdkManager
             GUILayout.Space(10);
         }
 
+        /**
+         * Temporary! Remove this after MoPub transitions are complete.
+         */
+        private void RemoveMoPub()
+        {
+            using (new EditorGUILayout.VerticalScope("box"))
+            {
+                GUILayout.Space(4);
+                using (new EditorGUILayout.HorizontalScope(GUILayout.ExpandWidth(true)))
+                {
+
+                    GUILayout.Space(3);
+                    
+                    if (GUILayout.Button(new GUIContent
+                    {
+                        text = "Remove Mopub",
+                    }, GUILayout.Width(250)))
+                    {
+                        var moPubRelatedFilePath = AssetsPathPrefix + "RollicGames/SkanManager.cs";
+                        if (File.Exists(moPubRelatedFilePath))
+                        {
+                            File.Delete(moPubRelatedFilePath);
+                        }
+                        var moPubPath = AssetsPathPrefix + "MoPub";
+                        if (Directory.Exists(moPubPath))
+                        {
+                            Directory.Delete(moPubPath, true);
+                            
+                        }
+                        
+                        AssetDatabase.Refresh();
+                    }
+
+                    GUILayout.Space(7);
+                }
+            }
+        }
+
         private void PopulateGroupSdks(List<Sdk> groupedSdkList, string groupTitle)
         {
             GUILayout.Space(5);
             EditorGUILayout.LabelField(groupTitle, _labelStyle, GUILayout.Height(20));
+            
+            if (groupTitle.Equals("Elephant SDKs"))
+            {
+                groupedSdkList = groupedSdkList.OrderBy(sdk => sdk.sdkName).ToList();
+            }
 
             using (new EditorGUILayout.VerticalScope("box"))
             {
@@ -175,7 +245,7 @@ namespace ElephantSdkManager
             cur = !string.IsNullOrEmpty(cur) ? sdkInfo.currentVersion.Replace("v", string.Empty) : "";
             var isInst = !string.IsNullOrEmpty(cur);
             var canInst = !string.IsNullOrEmpty(latestVersion) &&
-                          (!isInst || VersionUtils.CompareVersions(cur, latestVersion) < 0);
+                          (!isInst || !string.Equals(cur, latestVersion));
 
             var stillWorking = _editorCoroutine != null || _downloader != null;
 
@@ -201,7 +271,14 @@ namespace ElephantSdkManager
                     {
                         text = isInst ? "Upgrade" : "Install",
                     }, _fieldWidth))
+                    {
+                        if (!IsInstallAvailable(sdkInfo))
+                        {
+                            EditorUtility.DisplayDialog("Warning!", "Please install or upgrade required SDKs first:\n" + requiredSdks, "OK");
+                            return;
+                        }
                         this.StartCoroutine(DownloadSDK(sdkInfo));
+                    }
                     GUI.enabled = true;
                 }
 
@@ -265,8 +342,22 @@ namespace ElephantSdkManager
         {
             yield return null;
             _activity = "Downloading SDK version manifest...";
-
-            var unityWebRequest = new UnityWebRequest(ManifestSource.ManifestURL)
+            
+            string elephantSettingsPage = Application.dataPath + "/Resources/ElephantSettings.asset";
+            string gameId = "";
+            if (File.Exists(elephantSettingsPage))
+            {
+                string[] lines = File.ReadAllLines(elephantSettingsPage);
+                foreach (var line in lines)
+                {
+                    if (line.Contains("GameID"))
+                    {
+                        gameId = line.Replace("  GameID: ", "");
+                    }
+                }
+            }
+            
+            var unityWebRequest = new UnityWebRequest(ManifestSource.ManifestURL + gameId +  "&version=" + ElephantSdkManagerVersion.SDK_VERSION)
             {
                 downloadHandler = new DownloadHandlerBuffer(),
                 timeout = 10,
@@ -312,7 +403,7 @@ namespace ElephantSdkManager
                     {
                         var fieldInfo = type.GetField("SDK_VERSION",
                             BindingFlags.NonPublic | BindingFlags.Static);
-                        var adsSDK = _sdkList.Find(sdk => sdk.sdkName.Equals("RollicGames"));
+                        var adsSDK = _sdkList.Find(sdk => sdk.sdkName.Contains("Rollic Ads"));
                         if (!(fieldInfo is null)) adsSDK.currentVersion = fieldInfo.GetValue(null).ToString();
                     }
                 }
@@ -338,13 +429,105 @@ namespace ElephantSdkManager
                 {
                     var fieldInfo = type.GetField("SDK_VERSION",
                         BindingFlags.NonPublic | BindingFlags.Static);
-                    var adsSDK = _sdkList.Find(sdk => sdk.sdkName.Equals("RollicGames"));
+                    var adsSDK = _sdkList.Find(sdk => sdk.sdkName.Contains("Rollic Ads"));
                     if (!(fieldInfo is null)) adsSDK.currentVersion = fieldInfo.GetValue(null).ToString();
                 }
             }
-
+            
+            CheckVersionForMax();
+            CheckVersionForIs();
+            
+            AssetDatabase.Refresh();
             _editorCoroutine = null;
             Repaint();
+        }
+
+        private void CheckVersionForIs()
+        {
+            var ironSourceSdk = _sdkList.Find(sdk => sdk.sdkName.Contains("IronSource"));
+            if (ironSourceSdk == null)  return;
+            
+            var isPath = Application.dataPath + "/IronSource/Scripts/IronSource.cs";
+            if (File.Exists(isPath))
+            {
+                string[] lines = File.ReadAllLines(isPath);
+                foreach (var line in lines)
+                {
+                    if (line.Contains("private const string UNITY_PLUGIN_VERSION") || line.Contains("public static string UNITY_PLUGIN_VERSION"))
+                    {
+                        Regex regex = new Regex("\"(.*?)\"");
+
+                        var matches = regex.Matches(line);
+
+                        if (matches.Count > 0)
+                        {
+                            var maxVersion = matches[0].Value;
+                            maxVersion = maxVersion.Replace("\"", "");
+                            ironSourceSdk.currentVersion = maxVersion.Split('-').Length > 0 
+                                ? maxVersion.Split('-')[0] 
+                                : maxVersion;
+                        }
+                    }
+                }
+                
+                foreach (var sdk in _sdkList.Where(sdk => sdk.type.Equals("network")))
+                {
+                    var sdkName = sdk.sdkName;
+                    var currentVersion = VersionUtils.GetVersionFromXML(sdkName + "Dependencies");
+
+                    if (!string.IsNullOrEmpty(currentVersion))
+                    {
+                        sdk.currentVersion = currentVersion;
+                    }
+                }
+            }
+        }
+        
+        private void CheckVersionForMax()
+        {
+            var maxSDK = _sdkList.Find(sdk => sdk.sdkName.Contains("Applovin MAX"));
+            if (maxSDK != null)
+            {
+                string mopubPath = Application.dataPath + "/MaxSdk/Scripts/MaxSdk.cs";
+                if (File.Exists(mopubPath))
+                {
+                    string[] lines = File.ReadAllLines(mopubPath);
+                    foreach (var line in lines)
+                    {
+                        if (line.Contains("private const string _version"))
+                        {
+                            Regex regex = new Regex("\"(.*?)\"");
+
+                            var matches = regex.Matches(line);
+
+                            if (matches.Count > 0)
+                            {
+                                var maxVersion = matches[0].Value;
+                                maxVersion = maxVersion.Replace("\"", "");
+                                maxSDK.currentVersion = maxVersion;
+                            }
+                        }
+                    }
+                }
+
+                foreach (var sdk in _sdkList.Where(sdk => sdk.type.Equals("network")))
+                {
+                    var sdkName = sdk.sdkName;
+                    if (sdk.sdkName.Equals("Pangle"))
+                    {
+                        sdkName = "ByteDance";
+                    }
+
+                    var dependencyPath = "MaxSdk/Mediation/" + sdkName + "/Editor/Dependencies.xml";
+                    var currentVersion = VersionUtils.GetCurrentVersions(Path.Combine(AssetsPathPrefix, dependencyPath))
+                        .Unity;
+
+                    if (!string.IsNullOrEmpty(currentVersion))
+                    {
+                        sdk.currentVersion = currentVersion;
+                    }
+                }
+            }
         }
 
         private IEnumerator DownloadSdkManager(Sdk sdkInfo)
@@ -390,7 +573,13 @@ namespace ElephantSdkManager
 
         private IEnumerator DownloadSDK(Sdk sdkInfo)
         {
-            var path = Path.Combine(DownloadDirectory, sdkInfo.sdkName);
+            var path = Path.Combine(DownloadDirectory, sdkInfo.sdkName + ".unitypackage");
+
+            if (sdkInfo.downloadUrl.Contains("xml"))
+            {
+                path = "Assets/IronSource/Editor/" + sdkInfo.sdkName + "Dependencies.xml";
+            }
+            
             _activity = $"Downloading {sdkInfo.sdkName}...";
 
             // Start the async download job.
@@ -416,18 +605,70 @@ namespace ElephantSdkManager
             {
                 if (Directory.Exists(AssetsPathPrefix + sdkInfo.sdkName))
                 {
-                    FileUtil.DeleteFileOrDirectory(AssetsPathPrefix + sdkInfo.sdkName);
+                    if (!string.Equals(sdkInfo.sdkName, "IronSource"))
+                    {
+                        FileUtil.DeleteFileOrDirectory(AssetsPathPrefix + sdkInfo.sdkName);
+                    }
                 }
 
-                AssetDatabase.ImportPackage(path, true);
-                FileUtil.DeleteFileOrDirectory(path);
-            }
+                if (sdkInfo.sdkName.Contains("Rollic Ads"))
+                {
+                    if (Directory.Exists(AssetsPathPrefix + "RollicGames"))
+                    {
+                        FileUtil.DeleteFileOrDirectory(AssetsPathPrefix + "RollicGames");
+                    }
+                }
 
+                if (!path.Contains("xml"))
+                {
+                    AssetDatabase.ImportPackage(path, true);
+                    FileUtil.DeleteFileOrDirectory(path);
+                }
+                else
+                {
+                    CheckVersions();
+                }
+            }
+            
             _downloader.Dispose();
             _downloader = null;
             _editorCoroutine = null;
 
             yield return null;
+        }
+        
+        private void OnImportPackageCompleted(string packageName)
+        {
+            CheckVersions();
+        }
+
+        private bool IsInstallAvailable(Sdk dependentSdk)
+        {
+            requiredSdks = "";
+            if (_sdkList == null || _sdkList.Count == 0)
+            {
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(dependentSdk.depends_on)) return true;
+
+            var requiredSDK = _sdkList.Find(sdk => sdk.sdkName.Equals(dependentSdk.depends_on));
+
+            if (string.IsNullOrEmpty(requiredSDK?.currentVersion))
+            {
+                requiredSdks = requiredSDK?.sdkName;
+                return false;
+            }
+
+            if (VersionUtils.CompareVersions(requiredSDK.currentVersion.Replace("v", string.Empty),
+                dependentSdk.depending_sdk_version) >= 0)
+            {
+                return true;
+            }
+
+            requiredSdks = requiredSDK.sdkName;
+            return false;
+
         }
 
         private void CancelOperation()
