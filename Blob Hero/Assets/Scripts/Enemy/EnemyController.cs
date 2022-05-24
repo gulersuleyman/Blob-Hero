@@ -9,12 +9,18 @@ public class EnemyController : MonoBehaviour
 
     PlayerController _player;
     NavMeshAgent _agent;
-
+    SkinnedMeshRenderer _skinnedMesh;
+    MeshRenderer _meshRenderer;
     
     void Awake()
     {
+        _skinnedMesh = GetComponentInChildren<SkinnedMeshRenderer>();
+        _meshRenderer = GetComponentInChildren<MeshRenderer>();
         _agent = GetComponent<NavMeshAgent>();
         _player = FindObjectOfType<PlayerController>();
+        _skinnedMesh.enabled = false;
+        if(_meshRenderer !=null)
+        _meshRenderer.enabled = false;
     }
 
     
@@ -26,6 +32,15 @@ public class EnemyController : MonoBehaviour
         }
         
     }
+	private void OnTriggerEnter(Collider other)
+	{
+		if(other.gameObject.CompareTag("Island"))
+		{
+            _skinnedMesh.enabled = true;
+            if (_meshRenderer != null)
+            _meshRenderer.enabled = true;
+        }
+	}
 
 
 }

@@ -9,6 +9,9 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] Transform[] points;
     [SerializeField] Transform parent;
 
+
+    public bool canSpawn;
+
     int spawnBoundary;
 
 
@@ -17,6 +20,7 @@ public class EnemySpawner : MonoBehaviour
 
 	private void Start()
 	{
+        canSpawn = true;
         spawnBoundary = 8;
         timeBoundary = 4;
         currentTime = 0;
@@ -25,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
 	void Update()
     {
         currentTime += Time.deltaTime;
-        if(currentTime>timeBoundary)
+        if(currentTime>timeBoundary && canSpawn)
 		{
             SpawnEnemy();
             currentTime = 0;

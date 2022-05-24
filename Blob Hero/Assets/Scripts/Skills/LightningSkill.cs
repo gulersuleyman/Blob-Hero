@@ -46,6 +46,7 @@ public class LightningSkill : MonoBehaviour
 		{
 			Destroy(enemy);
 			canMove = true;
+			
 		});
 	}
 }

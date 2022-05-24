@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerCollision : MonoBehaviour
 {
+	[SerializeField] GameObject outOfIslandCanvas;
 	[SerializeField] GameObject levelUpCanvas;
 	[SerializeField] GameObject canvas;
 	[SerializeField] Image bar;
 	[SerializeField] Text levelIndexText;
 
+	public bool outOfIsland;
 	public bool stopActiver;
 
 	int levelIndex;
@@ -47,6 +49,10 @@ public class PlayerCollision : MonoBehaviour
 	private void Update()
 	{
 		canvas.transform.LookAt(Camera.main.transform.position);
+		if(outOfIsland && !GameManager.Instance.isDead)
+		{
+			DecreaseFillAmount(0.001f);
+		}
 	}
 
 	
@@ -54,13 +60,13 @@ public class PlayerCollision : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("Enemy"))
 		{
-			DecreaseFillAmount();
+			DecreaseFillAmount(decreaseFillAmount);
 			other.gameObject.GetComponent<EnemyController>().follow = false;
 			Destroy(other.gameObject, 1f);
 		}
 		if (other.gameObject.CompareTag("Spear"))
 		{
-			DecreaseFillAmount();
+			DecreaseFillAmount(decreaseFillAmount);
 			enemyAnim= other.gameObject.GetComponentInChildren<Animator>();
 			other.gameObject.GetComponent<EnemyController>().follow = false;
 			enemyAnim.SetBool("isSpear", true);
@@ -104,6 +110,11 @@ public class PlayerCollision : MonoBehaviour
 			}
 			Destroy(other.gameObject);
 		}
+		if(other.gameObject.CompareTag("Island"))
+		{
+			outOfIsland = false;
+			outOfIslandCanvas.gameObject.SetActive(false);
+		}
 	}
 	private void OnTriggerExit(Collider other)
 	{
@@ -118,13 +129,17 @@ public class PlayerCollision : MonoBehaviour
 			
 			other.gameObject.GetComponent<EnemyController>().follow = true;
 			
-
+		}
+		if(other.gameObject.CompareTag("Island"))
+		{
+			outOfIsland = true;
+			outOfIslandCanvas.gameObject.SetActive(true);
 		}
 	}
 
-	void DecreaseFillAmount()
+	void DecreaseFillAmount(float decreaseValue)
 	{
-		fillAmount -= decreaseFillAmount;
+		fillAmount -= decreaseValue;
 		bar.fillAmount = fillAmount;
 		if (fillAmount <= 0.06f)
 		{
