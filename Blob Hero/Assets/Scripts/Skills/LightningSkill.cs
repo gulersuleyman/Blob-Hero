@@ -6,12 +6,12 @@ using DG.Tweening;
 
 public class LightningSkill : MonoBehaviour
 {
-	
+	[SerializeField] GameObject skillTransform;
 	[SerializeField] Transform firstPosition;
 
-	bool canMove;
+	public bool canMove;
 
-	ShieldCollision _shield;
+	public ShieldCollision _shield;
 	private void OnEnable()
 	{
 		_shield = FindObjectOfType<ShieldCollision>();
@@ -21,39 +21,17 @@ public class LightningSkill : MonoBehaviour
 		_shield.gameObject.GetComponent<BoxCollider>().enabled = false;
 		_shield.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
 		
+		
 	}
 
-	private void OnTriggerStay(Collider other)
-	{
-		if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Spear"))
-		{
-			if(canMove)
-			{
-				if (other.gameObject.CompareTag("Enemy"))
-				{
-					Instantiate(_shield.coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-					Instantiate(_shield.effectPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-
-				}
-				if (other.gameObject.CompareTag("Spear"))
-				{
-					Instantiate(_shield.coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-					Instantiate(_shield.effect2Prefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
-
-				}
-				canMove = false;
-				Vector3 targetPos = new Vector3(other.gameObject.transform.position.x, transform.position.y, other.gameObject.transform.position.z);
-				LightningFly(targetPos, other.gameObject);
-			}
-			
-		}
-	}
+	
 	IEnumerator ActiveFalse()
 	{
 
 		yield return new WaitForSeconds(2f);
 		transform.DOMove(_shield.gameObject.transform.position, 0.1f).OnComplete(() =>
 		{
+			skillTransform.gameObject.SetActive(false);
 			_shield.gameObject.GetComponent<BoxCollider>().enabled = true;
 			_shield.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
 			this.gameObject.SetActive(false);
@@ -62,7 +40,7 @@ public class LightningSkill : MonoBehaviour
 		
 	}
 
-	void LightningFly(Vector3 pos,GameObject enemy)
+	public void LightningFly(Vector3 pos,GameObject enemy)
 	{
 		transform.DOMove(pos, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
 		{

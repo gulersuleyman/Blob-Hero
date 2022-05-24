@@ -24719,7 +24719,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302690734}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000040546492, z: 0.000000024049193, w: 0.86009014}
+  m_LocalRotation: {x: 0.5101421, y: -0.000000007454835, z: 0.000000004421657, w: 0.86009014}
   m_LocalPosition: {x: 0, y: 64.95, z: -36.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -25493,13 +25493,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721638549}
+  - component: {fileID: 721638551}
+  - component: {fileID: 721638550}
+  - component: {fileID: 721638552}
   m_Layer: 0
   m_Name: throwShieldTransform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &721638549
 Transform:
   m_ObjectHideFlags: 0
@@ -25515,6 +25518,47 @@ Transform:
   m_Father: {fileID: 1123683505}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &721638550
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721638548}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 38.21246, y: 1, z: 37.707012}
+  m_Center: {x: 0.630424, y: 0, z: -1.7288632}
+--- !u!54 &721638551
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721638548}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &721638552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721638548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff86dbe34f812d47bc4a6c3213cb8bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &745713676
 GameObject:
   m_ObjectHideFlags: 0
@@ -25778,7 +25822,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000040546492, z: 0.000000024049193, w: 0.86009014}
+  m_LocalRotation: {x: 0.5101421, y: -0.000000007454835, z: 0.000000004421657, w: 0.86009014}
   m_LocalPosition: {x: 0, y: 64.95, z: -36.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -61997,7 +62041,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2970377d6b85b464082ac3dab3b7b2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTransform: {fileID: 721638548}
   firstPosition: {fileID: 721638549}
+  canMove: 0
+  _shield: {fileID: 0}
 --- !u!198 &4685948745063667370
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -129064,6 +129111,50 @@ PrefabInstance:
       propertyPath: moveSpeedIncreaseValue
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6604634581768950923, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0cc3d2f75cd44f9408ee989777e5e803, type: 3}
+    - target: {fileID: 6604634581816463402, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581867023809, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_Text
+      value: 'THROWf SHIELD
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634581867023823, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -301
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634582387197250, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604634582731615139, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0cc3d2f75cd44f9408ee989777e5e803, type: 3}
+    - target: {fileID: 7626533600898616695, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626533601085243657, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_Text
+      value: 'THROW SHIELD
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626533601085243663, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -299
+      objectReference: {fileID: 0}
+    - target: {fileID: 7626533601564890212, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 0cc3d2f75cd44f9408ee989777e5e803, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5db9cfc438da7442ae93e1e289e111e, type: 3}
 --- !u!1001 &6661720354152313048
@@ -135954,6 +136045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f293805afb59ff48ad1661e41ee73b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shieldTransform: {fileID: 721638548}
   shieldThrow: {fileID: 4685948745045017494}
 --- !u!4 &9103633341515969644
 Transform:

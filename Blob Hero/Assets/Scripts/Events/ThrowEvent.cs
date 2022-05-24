@@ -5,7 +5,7 @@ using UnityEngine;
 public class ThrowEvent : MonoBehaviour
 {
 
-
+	[SerializeField] GameObject shieldTransform;
     [SerializeField] GameObject shieldThrow;
     AnimationController _animationController;
 
@@ -16,7 +16,9 @@ public class ThrowEvent : MonoBehaviour
 
 	void throwShieldBegin()
 	{
+
         shieldThrow.gameObject.SetActive(true);
+		shieldTransform.gameObject.SetActive(true);
 		_animationController.ThrowAnimation(false);
 	}
         
