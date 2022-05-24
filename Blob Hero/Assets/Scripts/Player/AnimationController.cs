@@ -31,4 +31,11 @@ public class AnimationController : MonoBehaviour
 
         _animator.SetBool("isDeath", isDeath);
     }
+    public void ThrowAnimation(bool isThrowing)
+    {
+        if (isThrowing == _animator.GetBool("isThrowing")) return;
+
+        _animator.SetBool("isThrowing", isThrowing);
+    }
+
 }

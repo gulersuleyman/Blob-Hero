@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class LightningSkill : MonoBehaviour
 {
+	
 	[SerializeField] Transform firstPosition;
 
 	bool canMove;
@@ -17,6 +18,9 @@ public class LightningSkill : MonoBehaviour
 		canMove = true;
 		transform.position = firstPosition.position;
 		StartCoroutine(ActiveFalse());
+		_shield.gameObject.GetComponent<BoxCollider>().enabled = false;
+		_shield.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
+		
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -48,7 +52,14 @@ public class LightningSkill : MonoBehaviour
 	{
 
 		yield return new WaitForSeconds(2f);
-		this.gameObject.SetActive(false);
+		transform.DOMove(_shield.gameObject.transform.position, 0.1f).OnComplete(() =>
+		{
+			_shield.gameObject.GetComponent<BoxCollider>().enabled = true;
+			_shield.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+			this.gameObject.SetActive(false);
+			
+		});
+		
 	}
 
 	void LightningFly(Vector3 pos,GameObject enemy)
