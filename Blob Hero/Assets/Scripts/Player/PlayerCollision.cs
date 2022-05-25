@@ -63,7 +63,7 @@ public class PlayerCollision : MonoBehaviour
 		{
 			DecreaseFillAmount(decreaseFillAmount);
 			other.gameObject.GetComponent<EnemyController>().follow = false;
-			Destroy(other.gameObject, 1f);
+			
 		}
 		if (other.gameObject.CompareTag("Spear"))
 		{

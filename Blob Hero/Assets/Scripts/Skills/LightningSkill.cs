@@ -12,6 +12,8 @@ public class LightningSkill : MonoBehaviour
 	public bool canMove;
 
 	public ShieldCollision _shield;
+
+	UIManager _uiManager;
 	private void OnEnable()
 	{
 		_shield = FindObjectOfType<ShieldCollision>();
@@ -20,8 +22,8 @@ public class LightningSkill : MonoBehaviour
 		StartCoroutine(ActiveFalse());
 		_shield.gameObject.GetComponent<BoxCollider>().enabled = false;
 		_shield.gameObject.GetComponentInChildren<MeshRenderer>().enabled = false;
-		
-		
+
+		_uiManager = FindObjectOfType<UIManager>();
 	}
 
 	
@@ -44,6 +46,10 @@ public class LightningSkill : MonoBehaviour
 	{
 		transform.DOMove(pos, 0.25f).SetEase(Ease.Linear).OnComplete(() =>
 		{
+			_shield.canonJumpIndex++;
+			GameObject coin = Instantiate(_shield.coinPrefab, enemy.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
+			coin.GetComponent<BoxCollider>().size += _uiManager.coinDistance;
+			Instantiate(_shield.effect2Prefab, enemy.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Destroy(enemy);
 			canMove = true;
 			

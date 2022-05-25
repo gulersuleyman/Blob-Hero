@@ -117,6 +117,8 @@ public class UIManager : MonoBehaviour
 	public void lateOpen()
 	{
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		GameManager.Instance.isCanon = false;
+		GameManager.Instance.isDead = false;
 	}
 
 }

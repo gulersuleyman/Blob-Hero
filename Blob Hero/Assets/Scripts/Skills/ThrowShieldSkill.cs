@@ -34,7 +34,7 @@ public class ThrowShieldSkill : MonoBehaviour
 
 		}
 	}
-	private void OnTriggerEnter(Collider other)
+	/*private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.CompareTag("Enemy"))
 		{
@@ -54,5 +54,5 @@ public class ThrowShieldSkill : MonoBehaviour
 		{
 			_shield.canon1.gameObject.SetActive(true);
 		}
-	}
+	}*/
 }

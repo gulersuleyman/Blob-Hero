@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     Bezier _bezier;
     PlayerCollision _playercollision;
     EnemySpawner _spawner;
+    ShieldCollision _shield;
     // Start is called before the first frame update
     void Awake()
     {
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
         _bezier = FindObjectOfType<Bezier>();
         _playercollision = GetComponent<PlayerCollision>();
         _spawner = FindObjectOfType<EnemySpawner>();
+        _shield = GetComponentInChildren<ShieldCollision>();
     }
 
     // Update is called once per frame
@@ -51,6 +53,10 @@ public class PlayerController : MonoBehaviour
                 _rigidbody.isKinematic = true;
             }
         }
+        if(GameManager.Instance.isDead)
+		{
+            _rigidbody.isKinematic = true;
+		}
         if(GameManager.Instance.isCanon && Input.GetMouseButtonDown(0) && !bezierMove)
 		{
             StartCoroutine(BezierMove());
@@ -75,6 +81,7 @@ public class PlayerController : MonoBehaviour
         _playercollision.stopActiver = false;
         bezierMove = false;
         _spawner.canSpawn = true;
+        _shield.canon1.gameObject.SetActive(false);
         
         yield return null;
 	}
