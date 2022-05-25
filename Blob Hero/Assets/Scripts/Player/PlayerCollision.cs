@@ -73,6 +73,11 @@ public class PlayerCollision : MonoBehaviour
 			enemyAnim.SetBool("isSpear", true);
 			
 		}
+		if(other.gameObject.CompareTag("Boss"))
+		{
+			DecreaseFillAmount(decreaseFillAmount);
+			other.gameObject.GetComponent<Boss>().follow = false;
+		}
 		if(other.gameObject.CompareTag("Coin"))
 		{
 			
@@ -135,7 +140,11 @@ public class PlayerCollision : MonoBehaviour
 			other.gameObject.GetComponent<EnemyController>().follow = true;
 			
 		}
-		if(other.gameObject.CompareTag("Island") && !GameManager.Instance.isCanon)
+		if (other.gameObject.CompareTag("Boss"))
+		{
+			other.gameObject.GetComponent<Boss>().follow = true;
+		}
+		if (other.gameObject.CompareTag("Island") && !GameManager.Instance.isCanon)
 		{
 			outOfIsland = true;
 			outOfIslandCanvas.gameObject.SetActive(true);

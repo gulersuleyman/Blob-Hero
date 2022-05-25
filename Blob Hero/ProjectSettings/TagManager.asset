@@ -8,6 +8,7 @@ TagManager:
   - Spear
   - Coin
   - Island
+  - Boss
   layers:
   - Default
   - TransparentFX
