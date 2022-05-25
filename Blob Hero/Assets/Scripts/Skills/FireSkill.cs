@@ -18,13 +18,13 @@ public class FireSkill : MonoBehaviour
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.gameObject.CompareTag("Enemy"))
+		if (other.gameObject.CompareTag("Enemy") && other.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled)
 		{
 			Instantiate(_shield.coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Instantiate(_shield.effectPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Destroy(other.gameObject);
 		}
-		if (other.gameObject.CompareTag("Spear"))
+		if (other.gameObject.CompareTag("Spear") && other.gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled)
 		{
 			Instantiate(_shield.coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Instantiate(_shield.effect2Prefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
