@@ -110,7 +110,7 @@ public class PlayerController : MonoBehaviour
 
         }
         _animationcontroller.FlyAnimation(false);
-        transform.position = new Vector3(transform.position.x, -1.7f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, -2.4f, transform.position.z);
         smokeParticle2.Play();
         GameManager.Instance.isCanon = false;
         _rotator.Working = true;
