@@ -29,7 +29,7 @@ public class Boss : MonoBehaviour
     }
 	private void OnTriggerEnter(Collider other)
 	{
-        if(!other.gameObject.CompareTag("Island"))
+        if(!other.gameObject.CompareTag("Island") && other.gameObject.CompareTag("Boss") && other.gameObject.CompareTag("Enemy") && other.gameObject.CompareTag("Spear"))
 		{
             follow = true;
             transform.localScale = transform.localScale - new Vector3(0.5f, 0.5f, 0.5f);
