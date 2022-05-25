@@ -24866,8 +24866,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 302690734}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000039173294, z: 0.000000023234714, w: 0.86009014}
-  m_LocalPosition: {x: -10.209998, y: 64.64, z: -51.640003}
+  m_LocalRotation: {x: 0.5101421, y: -0.00000000749585, z: 0.0000000044459876, w: 0.86009014}
+  m_LocalPosition: {x: -1.999998, y: 64.64, z: -32.250004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24976,7 +24976,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8746a15ca8e6d0f4395dfec8f4663b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstJumpIndex: 0
+  canon1: {fileID: 8349375414457964883}
+  canonJumpIndex: 0
   coinPrefab: {fileID: 3228055023340672699, guid: 926f3353687e877498c7d30a07acf5ee, type: 3}
   effectPrefab: {fileID: 6336620038311931856, guid: 63004496925a9524999f6c5adf4268cb, type: 3}
   effect2Prefab: {fileID: 6444230559552382986, guid: 29504fe00952b164c9027203581fe0b2, type: 3}
@@ -25576,7 +25577,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -26375,8 +26376,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.5101421, y: -0.000000039173294, z: 0.000000023234714, w: 0.86009014}
-  m_LocalPosition: {x: -10.209998, y: 64.64, z: -51.640003}
+  m_LocalRotation: {x: 0.5101421, y: -0.00000000749585, z: 0.0000000044459876, w: 0.86009014}
+  m_LocalPosition: {x: -1.999998, y: 64.64, z: -32.250004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -31371,7 +31372,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123683504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.21, y: -1.7, z: -15.39}
+  m_LocalPosition: {x: -2, y: -1.7, z: 4}
   m_LocalScale: {x: 1.5303, y: 1.5303, z: 1.5303}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -31780,8 +31781,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstJumpBoundary: 100
-  secondJumpBoundary: 250
-  thridJumpBoundary: 500
+  secondJumpBoundary: 300
+  thirdJumpBoundary: 600
+  enemyCount: 0
   enemyPrefab: {fileID: 2837033797323108, guid: 5655482cf2abce84582a7e75dfa03db3, type: 3}
   enemy2Prefab: {fileID: 2213718047915589743, guid: 502f26107fd2d414a837c4ae915b938d, type: 3}
   points:
@@ -130883,7 +130885,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8688886374697649129
 Transform:
   m_ObjectHideFlags: 0

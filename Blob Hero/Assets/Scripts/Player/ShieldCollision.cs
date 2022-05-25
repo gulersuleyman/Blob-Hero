@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShieldCollision : MonoBehaviour
 {
+	public GameObject canon1;
+
 	public int canonJumpIndex;
 
 
@@ -12,11 +14,12 @@ public class ShieldCollision : MonoBehaviour
 	public GameObject effect2Prefab;
 
 	UIManager _uiManager;
-	
+	EnemySpawner _spawner;
 
 	private void Awake()
 	{
 		_uiManager = FindObjectOfType<UIManager>();
+		_spawner = FindObjectOfType<EnemySpawner>();
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -24,6 +27,7 @@ public class ShieldCollision : MonoBehaviour
 		if(other.gameObject.CompareTag("Enemy"))
 		{
 			canonJumpIndex++;
+			
 		    GameObject coin=Instantiate(coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			coin.GetComponent<BoxCollider>().size += _uiManager.coinDistance;
 			Instantiate(effectPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
@@ -37,6 +41,10 @@ public class ShieldCollision : MonoBehaviour
 			coin.GetComponent<BoxCollider>().size += _uiManager.coinDistance;
 			Instantiate(effect2Prefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Destroy(other.gameObject);
+		}
+		if(canonJumpIndex==_spawner.firstJumpBoundary)
+		{
+			canon1.gameObject.SetActive(true);
 		}
 	}
 }
