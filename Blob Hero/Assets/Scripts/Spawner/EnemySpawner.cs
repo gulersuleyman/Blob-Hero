@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public int firstJumpBoundary;
-    public int secondJumpBoundary;
-    public int thirdJumpBoundary;
+    public int[] canonJumpBoundaries;
+    public int canonJumpIndex;
 
 
     public int enemyCount=0;
@@ -64,23 +63,13 @@ public class EnemySpawner : MonoBehaviour
                 }
                 spawnIndex++;
                 enemyCount++;
-                if(enemyCount==firstJumpBoundary)
+                if(enemyCount==canonJumpBoundaries[canonJumpIndex])
 				{
                     canSpawn = false;
                     return;
 
 				}
-                if (enemyCount == secondJumpBoundary)
-                {
-                    canSpawn = false;
-                    return;
-
-                }
-                if (enemyCount == thirdJumpBoundary)
-                {
-                    canSpawn = false;
-                    return;
-                }
+               
 
             }
 		}

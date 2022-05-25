@@ -42,7 +42,7 @@ public class ShieldCollision : MonoBehaviour
 			Instantiate(effect2Prefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Destroy(other.gameObject);
 		}
-		if(canonJumpIndex==_spawner.firstJumpBoundary)
+		if(canonJumpIndex==_spawner.canonJumpBoundaries[_spawner.canonJumpIndex])
 		{
 			canon1.gameObject.SetActive(true);
 		}

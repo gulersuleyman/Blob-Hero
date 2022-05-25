@@ -33,7 +33,7 @@ public class FireSkill : MonoBehaviour
 			_shield.canonJumpIndex++;
 			Destroy(other.gameObject);
 		}
-		if (_shield.canonJumpIndex == _spawner.firstJumpBoundary)
+		if (_shield.canonJumpIndex == _spawner.canonJumpBoundaries[_spawner.canonJumpIndex])
 		{
 			_shield.canon1.gameObject.SetActive(true);
 		}

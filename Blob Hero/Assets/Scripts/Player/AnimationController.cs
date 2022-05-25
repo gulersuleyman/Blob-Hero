@@ -37,5 +37,11 @@ public class AnimationController : MonoBehaviour
 
         _animator.SetBool("isThrowing", isThrowing);
     }
+    public void FlyAnimation(bool isFlying)
+    {
+        if (isFlying == _animator.GetBool("isFlying")) return;
+
+        _animator.SetBool("isFlying", isFlying);
+    }
 
 }

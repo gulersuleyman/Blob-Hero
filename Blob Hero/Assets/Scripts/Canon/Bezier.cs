@@ -6,6 +6,9 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class Bezier : MonoBehaviour
 {
+
+    public GameObject tapText;
+
     public bool leftBezier;
     public bool rightBezier;
 
