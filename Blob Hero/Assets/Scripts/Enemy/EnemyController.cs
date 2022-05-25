@@ -26,7 +26,7 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
-        if(follow)
+        if(follow && !GameManager.Instance.isCanon)
 		{
             _agent.destination = _player.transform.position;
         }

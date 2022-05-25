@@ -7,7 +7,7 @@ using ElephantSDK;
 public class GameManager : MonoBehaviour
 {
     public bool isDead;
-    
+    public bool isCanon;
     public float levelExperience;
     public float chapterExperience;
 
@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        isCanon = false;
         GameAnalytics.Initialize();
         Time.timeScale = 0f;
         

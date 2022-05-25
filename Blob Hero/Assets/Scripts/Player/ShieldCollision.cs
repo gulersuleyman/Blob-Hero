@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ShieldCollision : MonoBehaviour
 {
+	public int canonJumpIndex;
+
+
 	public GameObject coinPrefab;
 	public GameObject effectPrefab;
 	public GameObject effect2Prefab;
 
 	UIManager _uiManager;
-
+	
 
 	private void Awake()
 	{
@@ -20,7 +23,7 @@ public class ShieldCollision : MonoBehaviour
 	{
 		if(other.gameObject.CompareTag("Enemy"))
 		{
-			
+			canonJumpIndex++;
 		    GameObject coin=Instantiate(coinPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			coin.GetComponent<BoxCollider>().size += _uiManager.coinDistance;
 			Instantiate(effectPrefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
@@ -29,6 +32,7 @@ public class ShieldCollision : MonoBehaviour
 		}
 		if (other.gameObject.CompareTag("Spear"))
 		{
+			canonJumpIndex++;
 			GameObject coin = Instantiate(coinPrefab, other.gameObject.transform.position+new Vector3(0,3,0), Quaternion.identity);
 			coin.GetComponent<BoxCollider>().size += _uiManager.coinDistance;
 			Instantiate(effect2Prefab, other.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);

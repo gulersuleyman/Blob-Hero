@@ -32,7 +32,8 @@ public class PlayerCollision : MonoBehaviour
 		_animationController = GetComponent<AnimationController>();
 		_experiences = FindObjectOfType<GameCanvasUI>();
 		_UImanager = FindObjectOfType<UIManager>();
-		
+		GameManager.Instance.GameStart();
+
 	}
 	private void OnEnable()
 	{
@@ -74,40 +75,44 @@ public class PlayerCollision : MonoBehaviour
 		}
 		if(other.gameObject.CompareTag("Coin"))
 		{
-			GameManager.Instance.GameStart();
-			if (levelIndex==1)
+			
+			if(!GameManager.Instance.isCanon)
 			{
-				_experiences.levelBar.fillAmount += 0.05f;
-			}
-			if(levelIndex==2)
-			{
-				_experiences.levelBar.fillAmount += 0.025f;
-			}
-			else
-			{
-				_experiences.levelBar.fillAmount += 0.02f;
+				if (levelIndex == 1)
+				{
+					_experiences.levelBar.fillAmount += 0.05f;
+				}
+				if (levelIndex == 2)
+				{
+					_experiences.levelBar.fillAmount += 0.025f;
+				}
+				else
+				{
+					_experiences.levelBar.fillAmount += 0.02f;
+				}
+
+				if (_experiences.levelBar.fillAmount > 0.98f)
+				{
+					GameManager.Instance.LevelCompleted();
+					levelIndex++;
+					_experiences.levelText.text = "LEVEL " + levelIndex;
+					_experiences.levelBar.fillAmount = 0;
+					_experiences.chapterBar.fillAmount += 0.05f;
+					if (_experiences.chapterBar.fillAmount >= 0.98)
+					{
+						chapterIndex++;
+						_experiences.chapterBar.fillAmount = 0;
+						_experiences.chapterText.text = "CHAPTER " + chapterIndex;
+					}
+					levelUpCanvas.gameObject.SetActive(true);
+					_UImanager.stopButton.gameObject.SetActive(false);
+					levelIndexText.text = levelIndex.ToString();
+					stopActiver = true;
+					Time.timeScale = 0;
+
+				}
 			}
 			
-			if(_experiences.levelBar.fillAmount>0.98f)
-			{
-				GameManager.Instance.LevelCompleted();
-				levelIndex++;
-				_experiences.levelText.text = "LEVEL " + levelIndex;
-				_experiences.levelBar.fillAmount = 0;
-				_experiences.chapterBar.fillAmount += 0.05f;
-				if(_experiences.chapterBar.fillAmount>=0.98)
-				{
-					chapterIndex++;
-					_experiences.chapterBar.fillAmount = 0;
-					_experiences.chapterText.text = "CHAPTER " + chapterIndex;
-				}
-				levelUpCanvas.gameObject.SetActive(true);
-				_UImanager.stopButton.gameObject.SetActive(false);
-				levelIndexText.text = levelIndex.ToString();
-				stopActiver = true;
-				Time.timeScale = 0;
-
-			}
 			Destroy(other.gameObject);
 		}
 		if(other.gameObject.CompareTag("Island"))
@@ -130,7 +135,7 @@ public class PlayerCollision : MonoBehaviour
 			other.gameObject.GetComponent<EnemyController>().follow = true;
 			
 		}
-		if(other.gameObject.CompareTag("Island"))
+		if(other.gameObject.CompareTag("Island") && !GameManager.Instance.isCanon)
 		{
 			outOfIsland = true;
 			outOfIslandCanvas.gameObject.SetActive(true);
