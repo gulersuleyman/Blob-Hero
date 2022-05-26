@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class LightningSkill : MonoBehaviour
 {
+	[SerializeField] float skillTime = 2f;
 	[SerializeField] GameObject skillTransform;
 	[SerializeField] Transform firstPosition;
 
@@ -30,7 +31,7 @@ public class LightningSkill : MonoBehaviour
 	IEnumerator ActiveFalse()
 	{
 
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(skillTime);
 		transform.DOMove(_shield.gameObject.transform.position, 0.1f).OnComplete(() =>
 		{
 			skillTransform.gameObject.SetActive(false);

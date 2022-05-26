@@ -9,6 +9,7 @@ TagManager:
   - Coin
   - Island
   - Boss
+  - BossActiver
   layers:
   - Default
   - TransparentFX

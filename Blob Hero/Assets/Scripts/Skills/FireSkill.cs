@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FireSkill : MonoBehaviour
 {
+	[SerializeField] float skillTime = 4f;
 	ShieldCollision _shield;
 
 
@@ -42,7 +43,7 @@ public class FireSkill : MonoBehaviour
 	IEnumerator ActiveFalse()
 	{
 
-		yield return new WaitForSeconds(5f);
+		yield return new WaitForSeconds(skillTime);
 		
 		this.gameObject.SetActive(false);
 	}

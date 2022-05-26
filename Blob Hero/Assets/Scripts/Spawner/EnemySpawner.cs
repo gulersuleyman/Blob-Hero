@@ -27,7 +27,7 @@ public class EnemySpawner : MonoBehaviour
 	{
         canSpawn = true;
         spawnBoundary = 8;
-        timeBoundary = 4;
+        timeBoundary = 3.5f;
         currentTime = 0;
 	}
 
