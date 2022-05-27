@@ -4,6 +4,8 @@ using UnityEngine;
 using DG.Tweening;
 public class Canon : MonoBehaviour
 {
+	
+
 	public Transform[] canonPositions;
 	public int positionIndex=0;
 
@@ -28,6 +30,9 @@ public class Canon : MonoBehaviour
 		if(positionIndex>0)
 		{
 			transform.position = canonPositions[positionIndex - 1].position;
+			transform.LookAt(canonPositions[positionIndex].position);
+			transform.eulerAngles = transform.eulerAngles + new Vector3(0, -90, 0);
+			
 		}
 		
 		
@@ -39,6 +44,7 @@ public class Canon : MonoBehaviour
 		{
 			other.gameObject.transform.eulerAngles = new Vector3(30, 0, 0);
 			other.gameObject.transform.position = playerTransform.position;
+			other.gameObject.transform.LookAt(canonPositions[positionIndex].position);
 			GameManager.Instance.isCanon = true;
 			other.gameObject.GetComponent<AnimationController>().WalkAnimation(false);
 			other.gameObject.GetComponent<Rigidbody>().isKinematic=true;

@@ -30,7 +30,7 @@ public class Rocket : MonoBehaviour
 		}
 		if (_shield.canonJumpIndex == _spawner.canonJumpBoundaries[_spawner.canonJumpIndex])
 		{
-			_shield.canon1.gameObject.SetActive(true);
+			_shield.canonTime = true;
 		}
 	}
 }

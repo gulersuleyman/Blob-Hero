@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShieldCollision : MonoBehaviour
 {
+	public GameObject spawnerParent;
+	public bool canonTime = false;
 	public GameObject canon1;
 
 	public int canonJumpIndex;
@@ -44,7 +46,16 @@ public class ShieldCollision : MonoBehaviour
 		}
 		if(canonJumpIndex==_spawner.canonJumpBoundaries[_spawner.canonJumpIndex])
 		{
+			//canon1.gameObject.SetActive(true);
+			canonTime = true;
+		}
+	}
+	private void Update()
+	{
+		if(canonTime && spawnerParent.transform.childCount==0)
+		{
 			canon1.gameObject.SetActive(true);
+			canonTime = false;
 		}
 	}
 }

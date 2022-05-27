@@ -13,10 +13,11 @@ public class LightningSkill : MonoBehaviour
 	public bool canMove;
 
 	public ShieldCollision _shield;
-
+	EnemySpawner _spawner;
 	UIManager _uiManager;
 	private void OnEnable()
 	{
+		_spawner = FindObjectOfType<EnemySpawner>();
 		_shield = FindObjectOfType<ShieldCollision>();
 		canMove = true;
 		transform.position = firstPosition.position;
@@ -53,6 +54,10 @@ public class LightningSkill : MonoBehaviour
 			Instantiate(_shield.effect2Prefab, enemy.gameObject.transform.position + new Vector3(0, 3, 0), Quaternion.identity);
 			Destroy(enemy);
 			canMove = true;
+			if(_shield.canonJumpIndex == _spawner.canonJumpBoundaries[_spawner.canonJumpIndex])
+			{
+				_shield.canonTime = true;
+			}
 			
 		});
 	}
