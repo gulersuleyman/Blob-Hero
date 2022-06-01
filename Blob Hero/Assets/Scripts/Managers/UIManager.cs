@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
+	[SerializeField] GameObject firstHitText;
 	[SerializeField] float decreaseTimeValue;
 	[SerializeField] float moveSpeedIncreaseValue;
 	[HideInInspector]
@@ -119,6 +120,11 @@ public class UIManager : MonoBehaviour
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		GameManager.Instance.isCanon = false;
 		GameManager.Instance.isDead = false;
+	}
+
+	public void OpenFirstText()
+	{
+		firstHitText.gameObject.SetActive(true);
 	}
 
 }
